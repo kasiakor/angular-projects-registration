@@ -1,0 +1,130 @@
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  /* gradient like the screenshot */
+  background: linear-gradient(90deg, #156cf0 0%, #6a46c6 100%);
+  padding: 14px 24px;
+
+  /* subtle depth */
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 24px;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+.brand-icon {
+  font-size: 20px;
+  transform: translateY(-1px);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+
+  margin: 0 auto; /* pushes links into center */
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 18px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.nav-link.active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  white-space: nowrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: transform 120ms ease, background 160ms ease, color 160ms ease,
+    border-color 160ms ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* Login outline button */
+.btn-outline {
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.btn-outline:hover {
+  border-color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Register filled button */
+.btn-solid {
+  color: #1b1f2a;
+  background: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
+}
+
+.btn-solid:hover {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+/* Responsive: collapse center links nicely */
+@media (max-width: 900px) {
+  .nav-links {
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-link {
+    font-size: 16px;
+  }
+  .brand-name {
+    font-size: 20px;
+  }
+}
