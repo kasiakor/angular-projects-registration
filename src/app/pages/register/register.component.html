@@ -1,1 +1,103 @@
-<p>register works!</p>
+<div class="page">
+  <div class="card">
+    <div class="header">
+      <div class="logo">
+        <i class="fa-solid fa-user-plus"></i>
+      </div>
+
+      <h1>Create Your Account</h1>
+      <p>Join TechNova to participate in exciting competitions</p>
+    </div>
+
+    <form class="form">
+      <!-- First / Last -->
+      <div class="grid grid-2">
+        <div class="field">
+          <label>Full Name</label>
+          <div class="input-group">
+            <span class="icon"><i class="fa-solid fa-user"></i></span>
+            <input
+              type="text"
+              name="fullName"
+              [(ngModel)]="registrationObject.fullName"
+              placeholder="Enter your full name"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="field">
+        <label>Email Address</label>
+        <div class="input-group">
+          <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="registrationObject.email"
+            placeholder="Enter your email"
+          />
+        </div>
+      </div>
+
+      <!-- College -->
+      <div class="field">
+        <label>College/University</label>
+        <div class="input-group">
+          <span class="icon"><i class="fa-solid fa-building-columns"></i></span>
+          <input
+            type="text"
+            name="collegeName"
+            [(ngModel)]="registrationObject.collegeName"
+            placeholder="Enter your college name"
+          />
+        </div>
+      </div>
+
+      <!-- Password / Confirm -->
+      <div class="grid grid-2">
+        <div class="field">
+          <label>Password</label>
+          <div class="input-group password">
+            <span class="icon"><i class="fa-solid fa-lock"></i></span>
+            <input
+              name="password"
+              [(ngModel)]="registrationObject.password"
+              placeholder="Create a password"
+            />
+            <button type="button" class="eye">
+              <i class="fa-regular"></i>
+            </button>
+          </div>
+
+          <div class="hint">
+            Password must be at least 8 characters with letters and numbers
+          </div>
+        </div>
+      </div>
+
+      <!-- Terms -->
+      <label class="terms">
+        <input type="checkbox" />
+        <span>
+          I agree to the
+          <a href="#">Terms of Service</a>
+          and
+          <a href="#">Privacy Policy</a>
+        </span>
+      </label>
+
+      <!-- Button -->
+      <button type="button" class="btn" (click)="onRegister()">
+        <i class="fa-solid fa-user-plus"></i>
+        Create Account
+      </button>
+
+      <!-- Footer -->
+      <div class="footer">
+        Already have an account?
+        <a href="#">Sign In</a>
+      </div>
+    </form>
+  </div>
+</div>

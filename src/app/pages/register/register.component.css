@@ -1,0 +1,227 @@
+:host {
+  display: block;
+}
+
+/* Page background */
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+  background: linear-gradient(135deg, #1e64ff, #4a57ff);
+}
+
+/* Card */
+.card {
+  width: min(920px, 100%);
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 34px 34px 26px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 36px;
+  color: #1f2937;
+  letter-spacing: 0.2px;
+}
+
+.header p {
+  margin-top: 6px;
+  color: #6b7280;
+  font-size: 15px;
+}
+
+/* Logo */
+.logo {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 10px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  color: #0b67ff;
+  background: rgba(11, 103, 255, 0.09);
+  font-size: 26px;
+}
+
+/* Form layout */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+.grid-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Fields */
+.field label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #1f2937;
+}
+
+/* Input group */
+.input-group {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.input-group:focus-within {
+  border-color: #0b67ff;
+  box-shadow: 0 0 0 4px rgba(11, 103, 255, 0.25);
+}
+
+/* Icons */
+.icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-right: 1px solid #e5e7eb;
+  background: #fafafa;
+  color: #111827;
+}
+
+/* Input */
+.input-group input,
+.input-group select {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 0 14px;
+  font-size: 15px;
+  color: #1f2937;
+  background: transparent;
+}
+
+/* Select arrow */
+.input-group.select .suffix {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-left: 1px solid #e5e7eb;
+  color: #6b7280;
+  background: #fafafa;
+}
+
+/* Password eye */
+.input-group.password .eye {
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: #6b7280;
+  border-left: 1px solid #e5e7eb;
+}
+
+.input-group.password .eye:hover {
+  color: #111827;
+}
+
+/* Hint */
+.hint {
+  font-size: 12.5px;
+  margin-top: 8px;
+  color: #6b7280;
+}
+
+/* Terms */
+.terms {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  font-size: 13.5px;
+  color: #6b7280;
+}
+
+.terms a {
+  color: #0b67ff;
+  text-decoration: none;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
+
+/* Button */
+.btn {
+  margin-top: 10px;
+  height: 50px;
+  border-radius: 12px;
+  border: none;
+  background: #0b67ff;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 16px 30px rgba(11, 103, 255, 0.28);
+}
+
+.btn:hover {
+  background: #095be0;
+}
+
+/* Footer */
+.footer {
+  margin-top: 14px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.footer a {
+  color: #0b67ff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 760px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 26px 18px 18px;
+  }
+
+  .header h1 {
+    font-size: 30px;
+  }
+}
