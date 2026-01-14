@@ -1,1 +1,71 @@
-<p>login works!</p>
+<div class="page">
+  <div class="card">
+    <div class="header">
+      <div class="avatar" aria-hidden="true">
+        <i class="fa-solid fa-user"></i>
+      </div>
+
+      <h1>Welcome Back</h1>
+      <p>Sign in to continue to TechNova</p>
+    </div>
+
+    <form class="form" (submit)="onLogin()" [formGroup]="loginForm">
+      <!-- Email -->
+      <div class="field">
+        <label>Email Address</label>
+        <div class="control">
+          <span class="left-icon" aria-hidden="true">
+            <i class="fa-solid fa-envelope"></i>
+          </span>
+          <input
+            type="email"
+            formControlName="email"
+            placeholder="Enter your email"
+          />
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="field">
+        <label>Password</label>
+
+        <div class="control control--password">
+          <span class="left-icon" aria-hidden="true">
+            <i class="fa-solid fa-lock"></i>
+          </span>
+
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Enter your password"
+            formControlName="password"
+          />
+
+          <button
+            type="button"
+            class="right-eye"
+            (click)="togglePassword()"
+            aria-label="Toggle password visibility"
+          >
+            <i
+              class="fa-regular"
+              [class.fa-eye]="!showPassword"
+              [class.fa-eye-slash]="showPassword"
+            ></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Button -->
+      <button type="submit" class="btn btn-primary">
+        <i class="fa-solid fa-right-to-bracket"></i>
+        <span>Sign In</span>
+      </button>
+
+      <!-- Footer -->
+      <div class="footer">
+        <span>Don't have an account?</span>
+        <a class="link" href="#">Register</a>
+      </div>
+    </form>
+  </div>
+</div>

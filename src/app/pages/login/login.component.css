@@ -1,0 +1,219 @@
+:host {
+  display: block;
+}
+
+/* Background (same family as your register page) */
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+  background: linear-gradient(135deg, #1e64ff, #4a57ff);
+}
+
+/* Card matches screenshot: narrower + soft shadow */
+.card {
+  width: min(520px, 100%);
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 34px 34px 26px;
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.18);
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #0b67ff;
+  border: 3px solid rgba(11, 103, 255, 0.2);
+  background: #ffffff;
+  font-size: 26px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 36px;
+  color: #111827;
+}
+
+.header p {
+  margin: 6px 0 0;
+  color: #6b7280;
+  font-size: 14.5px;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #111827;
+}
+
+/* Control wrapper (left icon block + input) */
+.control {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.control:focus-within {
+  border-color: rgba(11, 103, 255, 0.65);
+  box-shadow: 0 0 0 4px rgba(11, 103, 255, 0.18);
+}
+
+.left-icon {
+  width: 50px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  background: #f8fafc;
+  border-right: 1px solid #e5e7eb;
+  color: #111827;
+}
+
+.control input {
+  flex: 1;
+  height: 48px;
+  border: none;
+  outline: none;
+  padding: 0 14px;
+  font-size: 15px;
+  color: #111827;
+  background: transparent;
+}
+
+/* Password eye in its own square box (like screenshot) */
+.control--password {
+  overflow: visible; /* allow squared eye */
+}
+
+.right-eye {
+  width: 62px;
+  height: 48px;
+  border: 1px solid #9ca3af;
+  background: #fff;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  color: #6b7280;
+}
+
+.right-eye:hover {
+  color: #111827;
+}
+
+/* The password control needs the main border to stop at the eye box */
+.control--password {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.control--password:focus-within {
+  box-shadow: none;
+}
+
+/* Row: remember + forgot */
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 2px;
+}
+
+.remember {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #374151;
+  font-size: 14px;
+  user-select: none;
+}
+
+.remember input {
+  width: 16px;
+  height: 16px;
+}
+
+/* Links */
+.link {
+  color: #0b67ff;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+.link:hover {
+  opacity: 0.9;
+}
+
+/* Button */
+.btn {
+  margin-top: 6px;
+  height: 52px;
+  border: none;
+  border-radius: 10px;
+  background: #0b67ff;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+  box-shadow: 0 14px 26px rgba(11, 103, 255, 0.28);
+}
+
+.btn:hover {
+  background: #095be0;
+}
+
+/* Footer */
+.footer {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  font-size: 15px;
+  color: #111827;
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+  .card {
+    padding: 26px 18px 18px;
+  }
+
+  .header h1 {
+    font-size: 30px;
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
