@@ -27,17 +27,78 @@
       </a>
     </div>
 
-    <!-- Right: Actions -->
-    <div class="nav-actions">
-      <a class="btn btn-outline" routerLink="/login">
-        <span aria-hidden="true">↪</span>
-        Login
-      </a>
-      <a class="btn btn-solid" routerLink="/register">
-        <span aria-hidden="true">👤</span>
-        Register
-      </a>
-    </div>
+    <!-- When NOT logged in -->
+    <ng-container *ngIf="!isLoggedIn; else loggedInTpl">
+      <div class="nav-actions">
+        <a class="btn btn-outline" routerLink="/login">
+          <span aria-hidden="true">↪</span>
+          Login
+        </a>
+        <a class="btn btn-solid" routerLink="/register">
+          <span aria-hidden="true">👤</span>
+          Register
+        </a>
+      </div>
+    </ng-container>
+
+    <!-- When logged in -->
+    <ng-template #loggedInTpl>
+      <!-- User dropdown (shown when logged in) -->
+      <div class="dropdown">
+        <button
+          class="btn user-pill dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="fa-regular fa-circle-user me-2"></i>
+          Username
+        </button>
+
+        <ul class="dropdown-menu dropdown-menu-end user-menu shadow-sm">
+          <li>
+            <a
+              class="dropdown-item d-flex align-items-center gap-2"
+              routerLink="/dashboard"
+            >
+              <i class="fa-solid fa-gauge"></i>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item d-flex align-items-center gap-2"
+              routerLink="/profile"
+            >
+              <i class="fa-solid fa-user"></i>
+              My Profile
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item d-flex align-items-center gap-2"
+              routerLink="/projects"
+            >
+              <i class="fa-solid fa-folder-open"></i>
+              My Projects
+            </a>
+          </li>
+
+          <li><hr class="dropdown-divider my-2" /></li>
+
+          <li>
+            <button
+              class="dropdown-item d-flex align-items-center gap-2 text-danger"
+              type="button"
+              (click)="onLogout()"
+            >
+              <i class="fa-solid fa-right-from-bracket"></i>
+              Logout
+            </button>
+          </li>
+        </ul>
+      </div>
+    </ng-template>
   </div>
 </nav>
 
