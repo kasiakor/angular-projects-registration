@@ -31,6 +31,7 @@ export class LoginComponent {
       (res: any) => {
         console.log('Login response:', res);
         localStorage.setItem('studentId', res.userId);
+        localStorage.setItem('loggedAdmin', JSON.stringify(res));
         alert('Login successful');
         this.router.navigate(['/home']);
       },
