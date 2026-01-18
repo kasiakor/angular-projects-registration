@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Competition } from '../interfaces/competition.interface';
 
 @Injectable({
@@ -8,8 +9,8 @@ import { Competition } from '../interfaces/competition.interface';
 export class CompetitionService {
   constructor(private http: HttpClient) {}
 
-  getCompetitions() {
-    return this.http.get(
+  getCompetitions(): Observable<Competition[]> {
+    return this.http.get<Competition[]>(
       'https://api.freeprojectapi.com/api/ProjectCompetition/GetAllCompetition'
     );
   }

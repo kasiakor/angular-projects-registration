@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Competition } from '../../interfaces/competition.interface';
 import { CompetitionService } from '../../services/competition.service';
@@ -10,7 +10,12 @@ import { CompetitionService } from '../../services/competition.service';
   imports: [CommonModule, FormsModule],
   templateUrl: './competition.component.html',
 })
-export class CompetitionComponent {
+export class CompetitionComponent implements OnInit {
+  [x: string]: any;
+  ngOnInit(): void {
+    this.getAllCompetitions();
+  }
+
   competitionForm: Competition = {
     id: 0,
     title: '',
@@ -20,18 +25,34 @@ export class CompetitionComponent {
     status: '',
   };
 
+  competitionsList: Competition[] = [];
+
   competitionService = inject(CompetitionService);
 
-  onSave() {
-    this.competitionService.createCompetition(this.competitionForm).subscribe({
+  getAllCompetitions() {
+    this.competitionService.getCompetitions().subscribe({
       next: (res) => {
-        console.log('Competition created:', res);
-        alert('Competition created successfully!');
+        console.log('Competition list:', res);
+        this.competitionsList = res;
+        alert('Competition list retrieved successfully!');
       },
       error: () => {
         alert('API error!');
       },
     });
+  }
+
+  onSave() {
+    this.competitionService.createCompetition(this.competitionForm).subscribe({
+      next: (res) => {
+        console.log('Competition created:', res);
+        this.getAllCompetitions();
+      },
+      error: () => {
+        alert('API error!');
+      },
+    });
+    this.clear();
   }
 
   clear(): void {
