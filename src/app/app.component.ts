@@ -15,19 +15,21 @@ import { AuthService } from './services/auth.service';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  constructor(public auth: AuthService) {}
+  constructor(public authService: AuthService) {}
 
   // inject router to navigate programmatically if needed
   router = inject(Router);
 
+  get email(): string | null {
+  return this.authService.getUser()?.email ?? null;
+}
+
   get isLoggedIn(): boolean {
-    console.log('Checking login status:', this.auth.isLoggedIn());
-    return this.auth.isLoggedIn();
+    return this.authService.isLoggedIn();
   }
 
   onLogout(): void {
-    this.auth.clearUserId();
-    alert('You have been logged out.');
+    this.authService.clearUserId();
     this.router.navigate(['/home']);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class LoginComponent {
   }
 
   userService = inject(UserService);
+  authService = inject(AuthService);
   // inject router to navigate programmatically if needed
   router = inject(Router);
 
@@ -31,8 +33,9 @@ export class LoginComponent {
       (res: any) => {
         console.log('Login response:', res);
         localStorage.setItem('studentId', res.userId);
-        localStorage.setItem('loggedAdmin', JSON.stringify(res));
-        alert('Login successful');
+        localStorage.setItem('loggedUser', JSON.stringify(res));
+        this.authService.setUser(res); // triggers UI update
+
         this.router.navigate(['/home']);
       },
       (error) => {
