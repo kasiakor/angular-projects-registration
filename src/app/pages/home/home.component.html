@@ -34,95 +34,38 @@
     </header>
 
     <div class="featured-grid">
-      <!-- Card 1 -->
+      <!-- Card  -->
+      @for (item of competitionsList$ |async; track $index) {
       <article class="comp-card">
         <div class="comp-media">
           <img
             src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80"
             alt="AI Innovation Challenge"
           />
-          <span class="comp-badge comp-badge-danger">Deadline Soon</span>
+          <span class="comp-badge comp-badge-danger">{{ item.title }}</span>
         </div>
 
         <div class="comp-body">
-          <h3 class="comp-title">AI Innovation Challenge</h3>
           <p class="comp-desc">
-            Develop AI solutions that address real-world problems in healthcare,
-            education, or sustainability.
+            {{ item.description }}
           </p>
-          <!-- bottom pills (like the screenshot) -->
+
           <div class="comp-meta">
             <span class="pill pill-blue">
               <span aria-hidden="true">📅</span>
-              Ends: July 30, 2026
-            </span>
-            <span class="pill pill-green">
-              <span aria-hidden="true">👥</span>
-              24 Teams
+              Ends: {{ item.endDate | date : "dd-MM-yyyy" }}
             </span>
           </div>
+          <hr class="my-3" />
+
+          <button class="btn btn-outline-primary w-100">View Details</button>
         </div>
       </article>
-
-      <!-- Card 2 -->
-      <article class="comp-card">
-        <div class="comp-media">
-          <img
-            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
-            alt="Web Development Hackathon"
-          />
-        </div>
-
-        <div class="comp-body">
-          <h3 class="comp-title">Web Development Hackathon</h3>
-          <p class="comp-desc">
-            Create innovative web applications that solve problems for local
-            businesses & communities.
-          </p>
-          <!-- bottom pills (like the screenshot) -->
-          <div class="comp-meta">
-            <span class="pill pill-blue">
-              <span aria-hidden="true">📅</span>
-              Ends: July 20, 2026
-            </span>
-            <span class="pill pill-green">
-              <span aria-hidden="true">👥</span>
-              8 Teams
-            </span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card 3 -->
-      <article class="comp-card">
-        <div class="comp-media">
-          <img
-            src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80"
-            alt="IoT Solutions Competition"
-          />
-          <span class="comp-badge comp-badge-warn">New</span>
-        </div>
-
-        <div class="comp-body">
-          <h3 class="comp-title">IoT Solutions Competition</h3>
-          <p class="comp-desc">
-            Build Internet of Things solutions that improve efficiency, safety,
-            or quality of life.
-          </p>
-
-          <!-- bottom pills (like the screenshot) -->
-          <div class="comp-meta">
-            <span class="pill pill-blue">
-              <span aria-hidden="true">📅</span>
-              Ends: July 10, 2026
-            </span>
-            <span class="pill pill-green">
-              <span aria-hidden="true">👥</span>
-              22 Teams
-            </span>
-          </div>
-        </div>
-      </article>
+      }
+    </div>
+    <!-- View all button -->
+    <div class="d-flex justify-content-center mt-4">
+      <button class="btn btn-primary px-4 py-2">☰ View All Competitions</button>
     </div>
   </div>
 </section>
