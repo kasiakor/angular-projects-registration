@@ -5,4 +5,5 @@ export interface Competition {
   startDate: string;
   endDate: string;
   status: string;
+  competitionId: number;
 }

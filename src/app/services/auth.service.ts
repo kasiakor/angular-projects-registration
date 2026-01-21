@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private readonly STUDENT_ID_KEY = 'studentId';
+  private readonly LOGGED_USER = 'loggedUser';
   user: any = null;
 
   /** Returns true if userId exists in localStorage */
@@ -25,5 +26,9 @@ export class AuthService {
 
   clearUserId(): void {
     localStorage.removeItem(this.STUDENT_ID_KEY);
+  }
+
+  clearLoggedUser(): void {
+    localStorage.removeItem(this.LOGGED_USER);
   }
 }

@@ -23,6 +23,7 @@ export class CompetitionComponent implements OnInit {
     startDate: '',
     endDate: '',
     status: '',
+    competitionId: 0,
   };
 
   competitionsList: Competition[] = [];
@@ -63,6 +64,7 @@ export class CompetitionComponent implements OnInit {
       startDate: '',
       endDate: '',
       status: '',
+      competitionId: 0,
     };
   }
 

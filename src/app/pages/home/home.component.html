@@ -58,7 +58,11 @@
           </div>
           <hr class="my-3" />
 
-          <button class="btn btn-outline-primary w-100">View Details</button>
+          <button class="btn btn-outline-primary w-100">
+            <a [routerLink]="'/submit-project/' + item.competitionId">
+              View Details</a
+            >
+          </button>
         </div>
       </article>
       }

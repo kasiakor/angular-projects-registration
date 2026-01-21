@@ -15,6 +15,12 @@ export class CompetitionService {
     );
   }
 
+  getCompetitionById(id: number): Observable<Competition> {
+    return this.http.get<Competition>(
+      'https://api.freeprojectapi.com/api/ProjectCompetition/competition/' + id
+    );
+  }
+
   createCompetition(obj: Competition) {
     return this.http.post(
       'https://api.freeprojectapi.com/api/ProjectCompetition/competition',

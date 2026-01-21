@@ -1,1 +1,205 @@
-<p>submit-project works!</p>
+<!-- SubmitProject.component.html -->
+<div class="container py-4">
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb mb-0">
+      <li class="breadcrumb-item">
+        <a routerLink="/dashboard" class="text-decoration-none">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Submit Project</li>
+    </ol>
+  </nav>
+
+  <h2 class="fw-semibold mb-4">Submit Your Project</h2>
+
+  <div class="row g-4 align-items-start">
+    <!-- LEFT: FORM -->
+    <div class="col-lg-8">
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+          <form novalidate>
+            <!-- Select Competition -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Select Competition</label>
+              <select class="form-select" name="competitionId" required>
+                <option value="" disabled selected>
+                  Choose a competition...
+                </option>
+
+                <option value="competition">title</option>
+              </select>
+            </div>
+
+            <!-- Project Title -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Project Title</label>
+              <input
+                type="text"
+                class="form-control"
+                name="projectTitle"
+                placeholder="Enter your project title"
+                required
+              />
+            </div>
+
+            <!-- Project Description -->
+            <div class="mb-2">
+              <label class="form-label fw-semibold">Project Description</label>
+              <textarea
+                class="form-control"
+                rows="6"
+                name="projectDescription"
+                placeholder="Describe your project in detail..."
+                required
+              ></textarea>
+              <div class="form-text">
+                Explain the problem your project solves, your approach, and the
+                technologies used.
+              </div>
+            </div>
+
+            <!-- Project Tags -->
+            <div class="mb-2">
+              <label class="form-label fw-semibold">Project Tags</label>
+
+              <div class="mb-2">
+                <input
+                  type="text"
+                  class="form-control form-control"
+                  name="tags"
+                  placeholder="e.g., AI, Machine Learning, Web Development"
+                />
+              </div>
+              <small class="text-muted">Separate tags with commas</small>
+            </div>
+
+            <!-- Team Members -->
+            <div class="mb-2">
+              <div
+                class="d-flex align-items-center justify-content-between mb-3"
+              >
+                <label class="form-label fw-semibold">Team Members</label>
+
+                <!-- optional add button (keeps it clean + matches typical UI) -->
+                <button type="button" class="btn btn-outline-primary btn-sm">
+                  + Add member
+                </button>
+              </div>
+
+              <!-- Repeat rows -->
+
+              <div class="row g-3 align-items-center mb-3">
+                <div class="col-md-5">
+                  <input
+                    type="text"
+                    class="form-control form-control"
+                    placeholder="Name"
+                  />
+                </div>
+
+                <div class="col-md-5">
+                  <input
+                    type="email"
+                    class="form-control form-control"
+                    placeholder="Email"
+                  />
+                </div>
+
+                <div class="col-md-2 d-grid">
+                  <button
+                    type="button"
+                    class="btn btn-outline-danger btn-lg"
+                    aria-label="Remove team member"
+                  >
+                    🗑️
+                  </button>
+                </div>
+              </div>
+
+              <!-- Empty state (optional) -->
+
+              <div class="text-muted small">
+                No team members yet — click “Add member”.
+              </div>
+            </div>
+
+            <!-- Upload (optional UI placeholder like typical templates) -->
+            <div class="mb-4 mt-4">
+              <label class="form-label fw-semibold">Project Files</label>
+              <input class="form-control" type="file" name="files" multiple />
+              <div class="form-text">
+                Upload required files (zip, pdf, etc.)
+              </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex gap-2">
+              <button type="button" class="btn btn-outline-secondary">
+                Clear
+              </button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: SIDEBAR -->
+    <div class="col-lg-4">
+      <!-- Submission Guidelines -->
+      <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body p-4">
+          <h5 class="fw-semibold mb-3">Submission Guidelines</h5>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item px-0 d-flex gap-2 align-items-start">
+              <span class="text-success">✔</span>
+              <span
+                >Ensure your project adheres to the competition
+                requirements</span
+              >
+            </li>
+            <li class="list-group-item px-0 d-flex gap-2 align-items-start">
+              <span class="text-success">✔</span>
+              <span>Include a detailed description of your project</span>
+            </li>
+            <li class="list-group-item px-0 d-flex gap-2 align-items-start">
+              <span class="text-success">✔</span>
+              <span>Upload all required project files</span>
+            </li>
+            <li class="list-group-item px-0 d-flex gap-2 align-items-start">
+              <span class="text-success">✔</span>
+              <span>Provide clear installation/setup instructions</span>
+            </li>
+            <li class="list-group-item px-0 d-flex gap-2 align-items-start">
+              <span class="text-success">✔</span>
+              <span>List all team members who contributed</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Selected Competition -->
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+          <h5 class="fw-semibold mb-3">Selected Competition</h5>
+
+          <div class="text-muted">
+            Please select a competition to see details
+          </div>
+
+          <div class="border rounded p-3 bg-light">
+            <div class="fw-semibold">title</div>
+            <div class="text-muted small mt-1">description</div>
+
+            <div class="d-flex flex-wrap gap-2 mt-3">
+              <span class="badge text-bg-primary"> Start: </span>
+              <span class="badge text-bg-secondary"> End: </span>
+              <span class="badge text-bg-success"> status </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

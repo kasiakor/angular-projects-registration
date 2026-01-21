@@ -21,8 +21,8 @@ export class AppComponent {
   router = inject(Router);
 
   get email(): string | null {
-  return this.authService.getUser()?.email ?? null;
-}
+    return this.authService.getUser()?.email ?? null;
+  }
 
   get isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
@@ -30,6 +30,7 @@ export class AppComponent {
 
   onLogout(): void {
     this.authService.clearUserId();
+    this.authService.clearLoggedUser();
     this.router.navigate(['/home']);
   }
 }

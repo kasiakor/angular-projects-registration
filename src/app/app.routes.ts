@@ -17,5 +17,5 @@ export const routes: Routes = [
   { path: 'students', component: StudentsComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'competitions', component: CompetitionComponent },
-  { path: 'submit-project', component: SubmitProjectComponent },
+  { path: 'submit-project/:id', component: SubmitProjectComponent },
 ];
