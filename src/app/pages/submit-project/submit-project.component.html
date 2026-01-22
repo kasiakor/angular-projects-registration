@@ -14,136 +14,90 @@
 
   <div class="row g-4 align-items-start">
     <!-- LEFT: FORM -->
-    <div class="col-lg-8">
-      <div class="card shadow-sm border-0">
-        <div class="card-body p-4">
-          <form novalidate>
-            <!-- Select Competition -->
-            <div class="mb-3">
-              <label class="form-label fw-semibold">Select Competition</label>
-              <select class="form-select" name="competitionId" required>
-                <option value="" disabled selected>
-                  Choose a competition...
-                </option>
 
-                <option value="competition">title</option>
-              </select>
-            </div>
-
-            <!-- Project Title -->
-            <div class="mb-3">
-              <label class="form-label fw-semibold">Project Title</label>
-              <input
-                type="text"
-                class="form-control"
-                name="projectTitle"
-                placeholder="Enter your project title"
-                required
-              />
-            </div>
-
-            <!-- Project Description -->
-            <div class="mb-2">
-              <label class="form-label fw-semibold">Project Description</label>
-              <textarea
-                class="form-control"
-                rows="6"
-                name="projectDescription"
-                placeholder="Describe your project in detail..."
-                required
-              ></textarea>
-              <div class="form-text">
-                Explain the problem your project solves, your approach, and the
-                technologies used.
-              </div>
-            </div>
-
-            <!-- Project Tags -->
-            <div class="mb-2">
-              <label class="form-label fw-semibold">Project Tags</label>
-
-              <div class="mb-2">
+    <div *ngIf="projectObj">
+      <div class="col-lg-8">
+        <div class="card shadow-sm border-0">
+          <div class="card-body p-4">
+            <form novalidate>
+              <!-- Project Title -->
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Project Title</label>
                 <input
                   type="text"
-                  class="form-control form-control"
-                  name="tags"
-                  placeholder="e.g., AI, Machine Learning, Web Development"
+                  class="form-control"
+                  [(ngModel)]="projectObj.projectTitle"
+                  name="projectTitle"
+                  placeholder="Enter your project title"
+                  class="form-control"
+                  required
                 />
               </div>
-              <small class="text-muted">Separate tags with commas</small>
-            </div>
 
-            <!-- Team Members -->
-            <div class="mb-2">
-              <div
-                class="d-flex align-items-center justify-content-between mb-3"
-              >
-                <label class="form-label fw-semibold">Team Members</label>
+              <!-- Project Description -->
+              <div class="mb-2">
+                <label class="form-label fw-semibold"
+                  >Project Description</label
+                >
+                <textarea
+                  class="form-control"
+                  rows="6"
+                  [(ngModel)]="projectObj.description"
+                  name="description"
+                  placeholder="Describe your project in detail..."
+                  required
+                ></textarea>
+                <div class="form-text">
+                  Explain the problem your project solves, your approach, and
+                  the technologies used.
+                </div>
+              </div>
+              <!-- GitHub Link -->
+              <div class="mb-2">
+                <label class="form-label fw-semibold">GitHub Link</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="projectObj.githubLink"
+                  name="githubLink"
+                  placeholder="Enter your project title"
+                  class="form-control"
+                  required
+                />
+              </div>
 
-                <!-- optional add button (keeps it clean + matches typical UI) -->
-                <button type="button" class="btn btn-outline-primary btn-sm">
-                  + Add member
+              <!-- Submission Date -->
+              <div class="mb-2">
+                <label class="form-label fw-semibold">Submission Date</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  [(ngModel)]="projectObj.submissionDate"
+                  name="submissionDate"
+                  placeholder="Enter your project title"
+                  class="form-control"
+                  required
+                />
+              </div>
+
+              <!-- Buttons -->
+              <div class="d-flex gap-2">
+                <button type="button" class="btn btn-outline-secondary">
+                  Clear
+                </button>
+                <button
+                  type="button"
+                  (click)="onSave()"
+                  class="btn btn-primary"
+                >
+                  Submit
                 </button>
               </div>
-
-              <!-- Repeat rows -->
-
-              <div class="row g-3 align-items-center mb-3">
-                <div class="col-md-5">
-                  <input
-                    type="text"
-                    class="form-control form-control"
-                    placeholder="Name"
-                  />
-                </div>
-
-                <div class="col-md-5">
-                  <input
-                    type="email"
-                    class="form-control form-control"
-                    placeholder="Email"
-                  />
-                </div>
-
-                <div class="col-md-2 d-grid">
-                  <button
-                    type="button"
-                    class="btn btn-outline-danger btn-lg"
-                    aria-label="Remove team member"
-                  >
-                    🗑️
-                  </button>
-                </div>
-              </div>
-
-              <!-- Empty state (optional) -->
-
-              <div class="text-muted small">
-                No team members yet — click “Add member”.
-              </div>
-            </div>
-
-            <!-- Upload (optional UI placeholder like typical templates) -->
-            <div class="mb-4 mt-4">
-              <label class="form-label fw-semibold">Project Files</label>
-              <input class="form-control" type="file" name="files" multiple />
-              <div class="form-text">
-                Upload required files (zip, pdf, etc.)
-              </div>
-            </div>
-
-            <!-- Buttons -->
-            <div class="d-flex gap-2">
-              <button type="button" class="btn btn-outline-secondary">
-                Clear
-              </button>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-
     <!-- RIGHT: SIDEBAR -->
     <div class="col-lg-4">
       <!-- Submission Guidelines -->
@@ -183,19 +137,24 @@
       <div class="card shadow-sm border-0">
         <div class="card-body p-4">
           <h5 class="fw-semibold mb-3">Selected Competition</h5>
+          <div *ngIf="competitionData">
+            <div class="border rounded p-3 bg-light">
+              <div class="fw-semibold">{{ competitionData.title }}</div>
+              <div class="text-muted small mt-1">
+                {{ competitionData.description }}
+              </div>
 
-          <div class="text-muted">
-            Please select a competition to see details
-          </div>
-
-          <div class="border rounded p-3 bg-light">
-            <div class="fw-semibold">title</div>
-            <div class="text-muted small mt-1">description</div>
-
-            <div class="d-flex flex-wrap gap-2 mt-3">
-              <span class="badge text-bg-primary"> Start: </span>
-              <span class="badge text-bg-secondary"> End: </span>
-              <span class="badge text-bg-success"> status </span>
+              <div class="d-flex flex-wrap gap-2 mt-3">
+                <span class="badge text-bg-primary">
+                  Start: {{ competitionData.startDate | date : "dd-MM-yyyy" }}
+                </span>
+                <span class="badge text-bg-secondary">
+                  End: {{ competitionData.endDate | date : "dd-MM-yyyy" }}
+                </span>
+                <span class="badge text-bg-success">
+                  {{ competitionData.status }}
+                </span>
+              </div>
             </div>
           </div>
         </div>

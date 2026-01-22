@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Competition } from '../interfaces/competition.interface';
+import { Project } from '../interfaces/project.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +25,13 @@ export class CompetitionService {
   createCompetition(obj: Competition) {
     return this.http.post(
       'https://api.freeprojectapi.com/api/ProjectCompetition/competition',
+      obj
+    );
+  }
+
+  submitProject(obj: Project) {
+    return this.http.post(
+      'https://api.freeprojectapi.com/api/ProjectCompetition/project',
       obj
     );
   }
